@@ -1,0 +1,17 @@
+[
+  {
+    "row_id": "sample_001_dardan_bala",
+    "linkedin_url": "https://www.linkedin.com/in/dardan-bala-50338b78/",
+    "notes": "Sample profile #1 - Dardan Bala"
+  },
+  {
+    "row_id": "sample_002_john_markham",
+    "linkedin_url": "https://www.linkedin.com/in/john-markham-b2142a6/",
+    "notes": "Sample profile #2 - John Markham"
+  },
+  {
+    "row_id": "sample_003_samario_torres",
+    "linkedin_url": "https://www.linkedin.com/in/samariotorres/",
+    "notes": "Sample profile #3 - Samario Torres"
+  }
+]

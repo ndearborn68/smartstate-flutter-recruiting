@@ -1,0 +1,88 @@
+{
+  "type": "object",
+  "properties": {
+    "candidate_name": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "current_location": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "current_role": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "us_university_graduate": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "university_name": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "degree": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "graduation_year": {
+      "anyOf": [{"type": "string"}, {"type": "number"}, {"type": "null"}]
+    },
+    "total_years_experience": {
+      "anyOf": [{"type": "number"}, {"type": "null"}]
+    },
+    "mobile_dev_years": {
+      "anyOf": [{"type": "number"}, {"type": "null"}]
+    },
+    "flutter_experience": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "flutter_skill_level": {
+      "anyOf": [
+        {"type": "string", "enum": ["STRONG", "MENTIONED", "NOT_FOUND"]},
+        {"type": "null"}
+      ]
+    },
+    "dart_mentioned": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "kotlin_swift_java_mentioned": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "rest_api_experience": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "mobile_architecture_knowledge": {
+      "anyOf": [
+        {"type": "string", "enum": ["STRONG", "MENTIONED", "NOT_FOUND"]},
+        {"type": "null"}
+      ]
+    },
+    "igaming_industry_experience": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "published_apps": {
+      "anyOf": [{"type": "boolean"}, {"type": "null"}]
+    },
+    "github_profile": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "overall_recommendation": {
+      "type": "string",
+      "enum": ["STRONG_MATCH", "POTENTIAL_MATCH", "WEAK_MATCH", "NO_MATCH"]
+    },
+    "recommendation_reasoning": {
+      "type": "string"
+    },
+    "location_notes": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "red_flags": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "confidence": {
+      "type": "string",
+      "enum": ["high", "medium", "low"]
+    }
+  },
+  "required": [
+    "overall_recommendation",
+    "recommendation_reasoning",
+    "confidence"
+  ],
+  "additionalProperties": false
+}
