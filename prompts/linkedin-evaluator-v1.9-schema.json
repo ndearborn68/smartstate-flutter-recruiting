@@ -1,0 +1,178 @@
+{
+  "type": "object",
+  "properties": {
+    "pursue": {
+      "type": "boolean"
+    },
+    "candidate_name": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "profile_url": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "disqualification_reason": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "disqualification_detail": {
+      "anyOf": [{"type": "string"}, {"type": "null"}]
+    },
+    "location": {
+      "type": "object",
+      "properties": {
+        "current_city": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "current_state": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "formatted_location": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "region": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "notes": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "distance_estimation": {
+      "type": "object",
+      "properties": {
+        "estimated_miles_to_fort_lee": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "distance_confidence": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "within_50_miles": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "distance_status": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "distance_notes": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "current_role": {
+      "type": "object",
+      "properties": {
+        "title": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "company": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "start_date": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "duration_months": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "is_us_based": {"anyOf": [{"type": "boolean"}, {"type": "null"}]}
+      }
+    },
+    "education": {
+      "type": "object",
+      "properties": {
+        "meets_education_requirement": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "qualification_path": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "universities": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "name": {"type": "string"},
+              "degree": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+              "field": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+              "graduation_year": {"anyOf": [{"type": "number"}, {"type": "string"}, {"type": "null"}]},
+              "country": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+              "is_us_university": {"type": "boolean"},
+              "is_south_asian_university": {"type": "boolean"}
+            }
+          }
+        },
+        "highest_degree": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "education_notes": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "us_work_experience": {
+      "type": "object",
+      "properties": {
+        "total_us_based_months": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "total_us_based_years": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "meets_12_year_requirement": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "us_based_jobs": {"type": "array", "items": {"type": "object"}},
+        "notes": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "employment_history": {
+      "type": "object",
+      "properties": {
+        "total_jobs": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "total_years_experience": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "jobs_last_5_years": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "average_tenure_months": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "job_history": {"type": "array", "items": {"type": "object"}}
+      }
+    },
+    "stability_analysis": {
+      "type": "object",
+      "properties": {
+        "is_job_hopper": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "is_contractor": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "contractor_indicators": {"type": "array", "items": {"type": "string"}},
+        "job_stability_score": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "concerns": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "red_flags": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "technical_evaluation": {
+      "type": "object",
+      "properties": {
+        "mobile_dev_years": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "flutter_experience_years": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "flutter_skill_level": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "dart_mentioned": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "native_mobile_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "native_languages": {"type": "array", "items": {"type": "string"}},
+        "rest_api_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "mobile_architecture_knowledge": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+        "ci_cd_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "testing_frameworks": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "key_skills": {"type": "array", "items": {"type": "string"}},
+        "published_apps": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "github_profile": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      }
+    },
+    "recommendations_analysis": {
+      "type": "object",
+      "properties": {
+        "total_recommendations": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+        "has_flutter_recommenders": {"type": "boolean"},
+        "flutter_recommenders": {"type": "array", "items": {"type": "object"}},
+        "other_recommenders": {"type": "array", "items": {"type": "object"}},
+        "recommendation_summary": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+      },
+      "required": ["has_flutter_recommenders"]
+    },
+    "industry_fit": {
+      "type": "object",
+      "properties": {
+        "igaming_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+        "relevant_industries": {"type": "array", "items": {"type": "string"}},
+        "regulated_industry_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]}
+      }
+    },
+    "overall_evaluation": {
+      "type": "object",
+      "properties": {
+        "recommendation": {"type": "string", "enum": ["STRONG_MATCH", "POTENTIAL_MATCH", "WEAK_MATCH", "NO_MATCH"]},
+        "reasoning": {"type": "string"},
+        "confidence": {"type": "string", "enum": ["high", "medium", "low"]},
+        "match_score": {"type": "number", "minimum": 0, "maximum": 100},
+        "pros": {"type": "array", "items": {"type": "string"}},
+        "cons": {"type": "array", "items": {"type": "string"}},
+        "next_steps": {"type": "string"}
+      },
+      "required": ["recommendation", "reasoning", "confidence"]
+    },
+    "referral_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {"type": "string"},
+          "linkedin_url": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "current_title": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "current_company": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "location": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "estimated_miles_to_fort_lee": {"anyOf": [{"type": "number"}, {"type": "null"}]},
+          "has_flutter_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+          "has_mobile_experience": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+          "is_contractor": {"anyOf": [{"type": "boolean"}, {"type": "null"}]},
+          "referral_confidence": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "referral_notes": {"anyOf": [{"type": "string"}, {"type": "null"}]},
+          "source": {"anyOf": [{"type": "string"}, {"type": "null"}]}
+        },
+        "required": ["name", "linkedin_url", "referral_confidence"]
+      }
+    }
+  },
+  "required": ["pursue", "candidate_name", "overall_evaluation", "referral_candidates"],
+  "additionalProperties": false
+}

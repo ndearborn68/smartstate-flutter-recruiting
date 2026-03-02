@@ -7,10 +7,10 @@ LinkedIn profile evaluator + candidate sourcing pipeline for finding qualified F
 ## Quick Start - Use in Clay
 
 ### Step 1: Evaluate a Candidate (LinkedIn URL → Score)
-- **Prompt**: `prompts/linkedin-evaluator-v1.3.md`
-- **Schema**: `prompts/linkedin-evaluator-v1.3-schema.json`
+- **Prompt**: `prompts/linkedin-evaluator-v1.9.md`
+- **Schema**: `prompts/linkedin-evaluator-v1.9-schema.json`
 - **Model**: Claude 3.5 Sonnet (NOT GPT-4 Nano)
-- **Input**: LinkedIn profile URL column
+- **Input**: `{{prompt}}` = LinkedIn URL column; optionally pipe in Clay LinkedIn Enrichment columns
 
 ### Step 2: Find Candidates (People Search)
 - **Prompt**: `prompts/people-search-claygent-v1.0.md`
@@ -52,14 +52,17 @@ https://api.clay.com/v3/sources/webhook/pull-in-data-from-a-webhook-c9aa92fe-35a
 ## Pipeline Architecture
 
 ```
-[SOURCING]                          [EVALUATION]                    [OUTPUT]
-Clay People Search          →       LinkedIn Evaluator v1.3    →    Webhook
-(LinkedIn/Apollo/Hunter)            (Claygent - Claude 3.5)         to Clay table
-                                    ↓
-                                    Scores: STRONG_MATCH
-                                            POTENTIAL_MATCH
-                                            WEAK_MATCH
-                                            NO_MATCH
+[SOURCING]                          [ENRICHMENT]              [EVALUATION]                  [OUTPUT]
+Clay People Search          →       LinkedIn Enrichment    →  LinkedIn Evaluator v1.9   →   Webhook
+(LinkedIn/Apollo/Hunter)            (Clay native column)      (Claygent - Claude 3.5)        to Clay table
+                                    ↑ optional                ↑ dual-mode: reads enriched
+                                    Enrichment populates      columns OR browses URL directly
+                                    {{First Name}}, etc.      ↓
+                                                              Scores: STRONG_MATCH
+                                                                      POTENTIAL_MATCH
+                                                                      WEAK_MATCH
+                                                                      NO_MATCH
+                                                              + referral_candidates array
 ```
 
 ---
@@ -68,9 +71,11 @@ Clay People Search          →       LinkedIn Evaluator v1.3    →    Webhook
 
 | File | Version | Status | Purpose |
 |------|---------|--------|---------|
-| `linkedin-evaluator-v1.3.md` | 1.3 | ✅ Active | Full profile eval + distance estimate |
-| `linkedin-evaluator-v1.3-schema.json` | 1.3 | ✅ Active | JSON output schema |
-| `linkedin-evaluator-v1.2.md` | 1.2 | archived | Previous version |
+| `linkedin-evaluator-v1.9.md` | 1.9 | ✅ **Active** | Universal dual-mode: enriched columns OR direct URL browsing |
+| `linkedin-evaluator-v1.9-schema.json` | 1.9 | ✅ **Active** | JSON output schema (same as v1.8) |
+| `linkedin-evaluator-v1.8.md` | 1.8 | archived | Added referral_candidates extraction |
+| `linkedin-evaluator-v1.7.md` | 1.7 | archived | Fixed Antonin Kolar URL bug |
+| `linkedin-evaluator-v1.6.md` | 1.6 | archived | Contractor STOP logic |
 | `people-search-claygent-v1.0.md` | 1.0 | ✅ Active | Find candidates via web search |
 
 ---
@@ -122,6 +127,12 @@ Sample LinkedIn profiles in `test_data.json`:
 - **v1.1**: Added job stability and contractor detection
 - **v1.2**: Added comprehensive education verification, US work experience tracking, and recommendations analysis
 - **v1.3**: Added approximate distance estimation to Fort Lee, NJ (Claygent-based, no API required)
+- **v1.4**: Added `pursue` boolean and `distance_estimation` structured object
+- **v1.5**: Tightened contractor detection logic
+- **v1.6**: Added STEP 0 hard STOP for contractors (outputs minimal JSON and stops — no more rationalization)
+- **v1.7**: Fixed Antonin Kolar bug — Claygent visiting placeholder URLs from examples instead of actual input
+- **v1.8**: Added `referral_candidates` array — Claygent visits every recommender profile and surfaces qualified Flutter leads
+- **v1.9**: Universal dual-mode — reads Clay LinkedIn Enrichment columns if populated; falls back to direct URL browsing for clean vanity URLs from any other source
 - **v1.0 (People Search)**: Initial candidate sourcing Claygent
 
 ---
